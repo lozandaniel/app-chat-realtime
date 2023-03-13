@@ -1,4 +1,3 @@
-import './App.css'
 import { io } from 'socket.io-client'
 import { useEffect, useState } from 'react'
 
@@ -39,21 +38,24 @@ function App() {
 
   return (
     <div className="container px-4 w-full flex flex-col items-center justify-center">
-      <h1 className="text-6xl font-bold py-8 tracking-tighter">Chat global</h1>
+      <h1 className="text-6xl leading-none font-extrabold py-8 tracking-tighter text-white">
+        Chat
+        <span className="text-[#0084fa]"> Global</span>
+      </h1>
 
       <div className=" max-w-2xl w-full shadow-3xl rounded-lg">
         <ul className="h-96 overflow-y-auto">
-          {data.map((mes, i) => (
+          {data.map((message, i) => (
             <li
               key={i}
               className={`text-base my-4 px-4 max-w-full table ${
-                mes.from === 'Me'
+                message.from === 'Me'
                   ? 'bg-[#0084fa] ml-auto rounded-l-lg'
                   : 'bg-[#3E4042] rounded-r-lg'
               }`}
             >
-              <p className="font-semibold">{mes.from}</p>
-              <p>{mes.body}</p>
+              <p className="font-semibold">{message.from}</p>
+              <p>{message.body}</p>
             </li>
           ))}
         </ul>
